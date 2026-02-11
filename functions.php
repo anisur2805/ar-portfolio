@@ -13,8 +13,16 @@ function anisur_portfolio_scripts() {
 	// Google Fonts: Outfit (Headings), Inter (Body), JetBrains Mono (Code)
 	wp_enqueue_style( 'anisur-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;700;800&display=swap', array(), null );
 
+	// Font Awesome for Social Icons
+	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0' );
+
 	// Main Custom Script
 	wp_enqueue_script( 'anisur-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+
+	// Todo App Script
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'anisur-todo-script', get_template_directory_uri() . '/assets/js/todo.js', array(), '1.0.0', true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'anisur_portfolio_scripts' );
 

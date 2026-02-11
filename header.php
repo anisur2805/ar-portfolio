@@ -14,7 +14,7 @@
 	<div class="container header-container">
 		<div class="site-branding">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo">
-				WP<span class="accent-text">Engineer.</span>
+				Anisur<span class="accent-text"> Rahman.</span>
 			</a>
 		</div>
 

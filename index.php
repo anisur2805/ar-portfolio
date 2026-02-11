@@ -96,23 +96,23 @@ get_header();
 			<div class="expertise-grid">
 				<div class="expertise-card">
 					<span class="card-icon">🏗️</span>
-					<h4>Plugin Architect</h4>
-					<p>Engineering premium commercial modules for Divi and Elementor ecosystems with scalable OOP patterns.</p>
+					<h4>Plugin & Module Expert</h4>
+					<p>Engineering premium commercial modules for Divi, Elementor, and Beaver Builder ecosystems with scalable OOP patterns.</p>
 				</div>
 				<div class="expertise-card">
 					<span class="card-icon">⚛️</span>
-					<h4>React + WP</h4>
-					<p>Building modern Gutenberg blocks and dynamic interfaces with React.js for seamless user experiences.</p>
+					<h4>Gutenberg Engineering</h4>
+					<p>Building modern, high-performance Gutenberg blocks and dynamic interfaces with React.js and WP REST API.</p>
+				</div>
+				<div class="expertise-card">
+					<span class="card-icon">🎨</span>
+					<h4>Custom Theme Specialist</h4>
+					<p>Delivering pixel-perfect Figma-to-WordPress conversions and scalable WooCommerce solutions with a focus on clean-code architecture.</p>
 				</div>
 				<div class="expertise-card">
 					<span class="card-icon">⚡</span>
-					<h4>Core Web Vitals</h4>
-					<p>Aggressive performance tuning and asset optimization, consistently achieving Lighthouse scores of 90+.</p>
-				</div>
-				<div class="expertise-card">
-					<span class="card-icon">📐</span>
-					<h4>Figma to Code</h4>
-					<p>Translating complex designs into pixel-perfect, responsive WordPress themes with extreme fidelity.</p>
+					<h4>Performance & Strategy</h4>
+					<p>Aggressive performance tuning and strategic asset optimization, ensuring enterprise-grade speed and invisible stability.</p>
 				</div>
 			</div>
 		</div>
@@ -265,18 +265,66 @@ get_header();
 			<p class="section-subtitle">A glimpse into work built with precision.</p>
 			
 			<div class="case-studies-grid">
+				<!-- Zone7 Official Website -->
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #1a1a2e;">
+						<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80" alt="Zone7 Official Website" style="width: 100%; height: 100%; object-fit: cover;">
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>DIVI 5</span>
+							<span>CORPORATE</span>
+						</div>
+						<h4>Zone7 Official Website</h4>
+						<p>Modern corporate website built with Divi 5, featuring advanced page builder modules and premium design aesthetics.</p>
+						<a href="https://zone7.co" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
+				<!-- WPGigs Official Website -->
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #0d1b2a;">
+						<img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop&q=80" alt="WPGigs Official Website" style="width: 100%; height: 100%; object-fit: cover;">
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>GUTENBERG</span>
+							<span>FULL SITE EDITING</span>
+						</div>
+						<h4>WPGigs Official Website</h4>
+						<p>WordPress job marketplace built with Full Site Editing and custom Gutenberg blocks for maximum flexibility.</p>
+						<a href="https://wpgigs.com/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
+				<!-- Cavenaugh Media -->
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #16213e;">
+						<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop&q=80" alt="Cavenaugh Media Website" style="width: 100%; height: 100%; object-fit: cover;">
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>ELEMENTOR</span>
+							<span>CREATIVE AGENCY</span>
+						</div>
+						<h4>Cavenaugh Media</h4>
+						<p>Creative media agency website built with Elementor, showcasing dynamic layouts and custom widget integrations.</p>
+						<a href="https://cavenaughmedia.com/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
 						<div class="visual-placeholder billing-engine"></div>
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
-							<span>ARCHITECTURE</span>
-							<span>PHP / REACT</span>
+							<span>PLUGIN</span>
+							<span>WORDPRESS.ORG</span>
 						</div>
-						<h4>Divi Essential Framework</h4>
-						<p>Optimized core rendering engine resulting in 30% reduction in page weight and improved frontend speed.</p>
-						<a href="#" class="case-study-link">View Technical Details →</a>
+						<h4>Back to Top</h4>
+						<p>Simple and lightweight WordPress plugin for smooth scroll-to-top functionality.</p>
+						<a href="https://wordpress.org/plugins/ar-back-to-top/" target="_blank" class="case-study-link">View Project →</a>
 					</div>
 				</article>
 				
@@ -286,25 +334,163 @@ get_header();
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
-							<span>GUTENBERG</span>
-							<span>REACT / ES6+</span>
+							<span>WEB DESIGN</span>
+							<span>WORDPRESS</span>
 						</div>
-						<h4>Custom Block Ecosystem</h4>
-						<p>Engineered a modular system of React-driven Gutenberg blocks for high-traffic enterprise publishing.</p>
-						<a href="#" class="case-study-link">View Technical Details →</a>
+						<h4>Rashed Corp</h4>
+						<p>A professional corporate WordPress website built with high-performance standards.</p>
+						<a href="https://rashedcorp.co.uk/" target="_blank" class="case-study-link">View Project →</a>
 					</div>
 				</article>
+
+				<!--<article class="case-study-card">
+					<div class="case-study-image" style="background: #111821;">
+						<div class="visual-placeholder billing-engine"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>E-COMMERCE</span>
+							<span>WOOCOMMERCE</span>
+						</div>
+						<h4>Pastel Arabia</h4>
+						<p>High-end WooCommerce store optimized for conversion and speed.</p>
+						<a href="https://pastelarabia.com/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #0d131a;">
+						<div class="visual-placeholder media-portal"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>OPEN SOURCE</span>
+							<span>BOOTSTRAP 5</span>
+						</div>
+						<h4>BootScore Theme</h4>
+						<p>Active contributor to this popular Bootstrap 5 based WordPress starter theme.</p>
+						<a href="https://github.com/bootscore/bootscore" target="_blank" class="case-study-link">View Source →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #111821;">
+						<div class="visual-placeholder billing-engine"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>PLUGIN</span>
+							<span>GITHUB</span>
+						</div>
+						<h4>Popup Creator</h4>
+						<p>Custom WordPress plugin for creating and managing highly customizable popups.</p>
+						<a href="https://github.com/anisur2805/arpc-popup-creator" target="_blank" class="case-study-link">View Source →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #0d131a;">
+						<div class="visual-placeholder media-portal"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>APP</span>
+							<span>SLACK CLONE</span>
+						</div>
+						<h4>Slack App Clone</h4>
+						<p>Technical demonstration of a real-time messaging interface architecture.</p>
+						<a href="https://github.com/anisur2805/slack-clone" target="_blank" class="case-study-link">View Source →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #111821;">
+						<div class="visual-placeholder billing-engine"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>E-COMMERCE</span>
+							<span>AJAX</span>
+						</div>
+						<h4>WC Mini Cart</h4>
+						<p>Enhanced WooCommerce mini-cart with AJAX plus/minus functionality.</p>
+						<a href="https://github.com/anisur2805/woocommerce-mini-cart-ajax-plus-minus" target="_blank" class="case-study-link">View Source →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #0d131a;">
+						<div class="visual-placeholder media-portal"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>PLUGIN</span>
+							<span>WOOCOMMERCE</span>
+						</div>
+						<h4>WC Quick Order</h4>
+						<p>High-efficiency quick order solution for bulk WooCommerce transactions.</p>
+						<a href="https://github.com/anisur2805/quick-order-for-woocommerce" target="_blank" class="case-study-link">View Source →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #111821;">
+						<div class="visual-placeholder billing-engine"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>E-COMMERCE</span>
+							<span>WOOCOMMERCE</span>
+						</div>
+						<h4>Pastel Bangladesh</h4>
+						<p>Localized e-commerce experience for the Bangladesh market with optimized performance.</p>
+						<a href="https://pastelbangladesh.com/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #0d131a;">
+						<div class="visual-placeholder media-portal"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>NON-PROFIT</span>
+							<span>DONATION</span>
+						</div>
+						<h4>Global One</h4>
+						<p>A high-impact donation platform designed for global outreach and reliability.</p>
+						<a href="https://global-one.com/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article>
+
+				<article class="case-study-card">
+					<div class="case-study-image" style="background: #111821;">
+						<div class="visual-placeholder billing-engine"></div>
+					</div>
+					<div class="case-study-content">
+						<div class="case-study-meta">
+							<span>SERVICES</span>
+							<span>WORDPRESS</span>
+						</div>
+						<h4>Smooth Move Removal</h4>
+						<p>A service-based WordPress website with custom booking and service integrations.</p>
+						<a href="https://smoothmoveremovals.com.au/" target="_blank" class="case-study-link">View Project →</a>
+					</div>
+				</article> -->
 			</div>
 		</div>
 	</section>
+
 
 	<!-- OPEN SOURCE SECTION -->
 	<section id="open-source" class="section open-source-section">
 		<div class="container">
 			<div class="open-source-grid">
 				<div class="open-source-info">
+					<h2 class="section-badge">CONTRIBUTIONS</h2>
 					<h3 class="section-title">Open Source Contribution</h3>
-					<p>I actively contribute to the WordPress core and maintain several high-traffic plugins on GitHub. I believe in giving back to the community that powers the web.</p>
+					<p>I actively contribute to the WordPress core and maintain several high-traffic plugins on GitHub. I believe in giving back to the community that powers the web. My focus is on creating developer-friendly tools and modular architectures.</p>
+					
 					<div class="github-stats">
 						<div class="stat">
 							<span class="stat-value">450+</span>
@@ -316,32 +502,46 @@ get_header();
 						</div>
 					</div>
 				</div>
+				
 				<div class="open-source-visual">
-					<div class="contribution-card">
+					<!-- Featured Contribution: BootScore -->
+					<div class="contribution-card featured">
+						<div class="cont-badge">FEATURED CONTRIBUTION</div>
 						<div class="cont-header">
-							github.com/anisur2805 / <span class="accent-text">arpc-popup-creator</span>
-							<span class="cont-status">Active now</span>
+							<div class="repo-info">
+								<span class="repo-user">bootscore / </span>
+								<span class="repo-name accent-text">bootscore</span>
+							</div>
+							<span class="cont-status">Active Contributor</span>
 						</div>
-						<div class="cont-bar">
-							<div class="cont-fill" style="width: 85%;"></div>
-						</div>
-						<div class="cont-footer">
-							<span>75% PHP</span>
-							<span>15% CSS</span>
-							<span>10% JS</span>
+						<p class="cont-desc">A powerful Bootstrap 5 based WordPress starter theme. I actively contribute to the core development and theme ecosystem.</p>
+						<div class="cont-action">
+							<a href="https://github.com/bootscore/bootscore" target="_blank" class="accent-link">View Source →</a>
 						</div>
 					</div>
-					<div class="contribution-card mt-3">
-						<div class="cont-header">
-							github.com/anisur2805 / <span class="accent-text">curvy</span>
+
+					<!-- Other Plugins -->
+					<div class="contribution-cards-stack">
+						<div class="contribution-card secondary">
+							<div class="cont-header">
+								<div class="repo-info">
+									<span class="repo-user">anisur2805 / </span>
+									<span class="repo-name accent-text">arpc-popup-creator</span>
+								</div>
+								<span class="cont-status">Active</span>
+							</div>
+							<div class="cont-bar solo">
+								<div class="cont-fill php" style="width: 75%;" title="75% PHP"></div>
+								<div class="cont-fill css" style="width: 15%;" title="15% CSS"></div>
+								<div class="cont-fill js" style="width: 10%;" title="10% JS"></div>
+							</div>
+							<div class="cont-footer">
+								<span>75% PHP</span>
+								<span>15% CSS</span>
+								<span>10% JS</span>
+							</div>
 						</div>
-						<div class="cont-bar">
-							<div class="cont-fill" style="width: 60%;"></div>
-						</div>
-						<div class="cont-footer">
-							<span>90% JavaScript</span>
-							<span>10% HTML</span>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -383,34 +583,34 @@ get_header();
 			<div class="testimonial-grid-v2">
 				<div class="testimonial-item">
 					<div class="stars">★★★★★</div>
-					<p>"The most technically proficient WordPress developer we've worked with. He simply understands architectures."</p>
+					<p>"Best Wordpress service on Fiverr. Always responsive, quick turnaround. Always very happy with the service."</p>
 					<div class="testimonial-user">
-						<div class="user-avatar"></div>
+						<div class="user-avatar" style="background-image: url('https://i.pravatar.cc/150?u=fiverr'); background-size: cover;"></div>
 						<div>
-							<h6>Eric Wilson</h6>
-							<p>VP Engineering</p>
+							<h6>Fiverr Client</h6>
+							<p>Verified Purchase</p>
 						</div>
 					</div>
 				</div>
 				<div class="testimonial-item">
 					<div class="stars">★★★★★</div>
-					<p>"Transformation was blissful. Masterful WordPress-driven SPA API on top of light-speed frontend. Insane performance: 10/10."</p>
+					<p>"Wonderful to work with. Highly skilled in updating and maintaining WordPress webpages, theme design, and customization."</p>
 					<div class="testimonial-user">
-						<div class="user-avatar"></div>
+						<div class="user-avatar" style="background-image: url('https://i.pravatar.cc/150?u=upwork'); background-size: cover;"></div>
 						<div>
-							<h6>Phoebe Jenkins</h6>
-							<p>Product Designer</p>
+							<h6>Upwork Client</h6>
+							<p>Project Review</p>
 						</div>
 					</div>
 				</div>
 				<div class="testimonial-item">
 					<div class="stars">★★★★★</div>
-					<p>"A rare engine who truly understands both the WP core and the nuances of modern frontend frameworks."</p>
+					<p>"Highly technical and detail-oriented. Successfully delivered a complex WordPress theme design and customization project ahead of schedule."</p>
 					<div class="testimonial-user">
-						<div class="user-avatar"></div>
+						<div class="user-avatar" style="background-image: url('https://i.pravatar.cc/150?u=enterprise'); background-size: cover;"></div>
 						<div>
-							<h6>Shereen Aguilar</h6>
-							<p>Project Lead</p>
+							<h6>Enterprise Partner</h6>
+							<p>Technical Lead</p>
 						</div>
 					</div>
 				</div>
@@ -419,13 +619,13 @@ get_header();
 	</section>
 
 	<!-- FOOTER CTA -->
-	<section class="footer-cta">
+	<section id="contact" class="footer-cta">
 		<div class="container">
 			<div class="cta-banner">
 				<h2>Ready to build something<br>genuinely robust?</h2>
 				<p>I am currently accepting inquiries for senior contact-level and high-impact project engineering globally.</p>
 				<div class="cta-actions">
-					<a href="mailto:anisur2805@gmail.com" class="btn btn-dark">hire@wp_engineer.dev</a>
+					<a href="mailto:anisur2805@gmail.com" class="btn btn-dark">anisur2805@gmail.com</a>
 					<a href="https://calendly.com/anisur2805/30min" target="_blank" class="btn btn-outline">Book a Strategy Call</a>
 				</div>
 			</div>
