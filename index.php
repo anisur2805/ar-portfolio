@@ -268,7 +268,7 @@ get_header();
 				<!-- Zone7 Official Website -->
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #1a1a2e;">
-						<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80" alt="Zone7 Official Website" style="width: 100%; height: 100%; object-fit: cover;">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/zone7.svg" alt="Zone7 Official Website" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -284,7 +284,7 @@ get_header();
 				<!-- WPGigs Official Website -->
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d1b2a;">
-						<img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop&q=80" alt="WPGigs Official Website" style="width: 100%; height: 100%; object-fit: cover;">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/wpgigs.svg" alt="WPGigs Official Website" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -300,7 +300,7 @@ get_header();
 				<!-- Cavenaugh Media -->
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #16213e;">
-						<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop&q=80" alt="Cavenaugh Media Website" style="width: 100%; height: 100%; object-fit: cover;">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/cavenaughmedia.svg" alt="Cavenaugh Media Website" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -315,7 +315,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/back-to-top.png" alt="Back to Top Plugin" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -330,7 +330,7 @@ get_header();
 				
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d131a;">
-						<div class="visual-placeholder media-portal"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/rashed-corp.png" alt="Rashed Corp Website" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -343,9 +343,10 @@ get_header();
 					</div>
 				</article>
 
-				<!--<article class="case-study-card">
+
+				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/pastel-arabia.png" alt="Pastel Arabia" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -360,7 +361,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d131a;">
-						<div class="visual-placeholder media-portal"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/bootscore.png" alt="BootScore Theme" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -375,7 +376,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/popup-creator.png" alt="Popup Creator" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -390,7 +391,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d131a;">
-						<div class="visual-placeholder media-portal"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/slack-clone.png" alt="Slack App Clone" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -405,7 +406,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/wc-mini-cart.gif" alt="WC Mini Cart" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -420,7 +421,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d131a;">
-						<div class="visual-placeholder media-portal"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/wc-quick-order.svg" alt="WC Quick Order" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -435,7 +436,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/pastel-bangladesh.png" alt="Pastel Bangladesh" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -450,7 +451,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #0d131a;">
-						<div class="visual-placeholder media-portal"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/global-one.png" alt="Global One" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
@@ -465,7 +466,7 @@ get_header();
 
 				<article class="case-study-card">
 					<div class="case-study-image" style="background: #111821;">
-						<div class="visual-placeholder billing-engine"></div>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/smooth-move.png" alt="Smooth Move Removal" style="width: 100%; height: 100%; object-fit: cover;">
 					</div>
 					<div class="case-study-content">
 						<div class="case-study-meta">
