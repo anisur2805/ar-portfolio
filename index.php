@@ -265,220 +265,39 @@ get_header();
 			<p class="section-subtitle">A glimpse into work built with precision.</p>
 			
 			<div class="case-studies-grid">
-				<!-- Zone7 Official Website -->
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #1a1a2e;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/zone7.svg" alt="Zone7 Official Website" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>DIVI 5</span>
-							<span>CORPORATE</span>
-						</div>
-						<h4>Zone7 Official Website</h4>
-						<p>Modern corporate website built with Divi 5, featuring advanced page builder modules and premium design aesthetics.</p>
-						<a href="https://zone7.co" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
+				<?php
+				$portfolio_items = anisur_get_portfolio_items();
+				$initial_items = array_slice( $portfolio_items, 0, 6 );
 
-				<!-- WPGigs Official Website -->
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d1b2a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/wpgigs.svg" alt="WPGigs Official Website" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>GUTENBERG</span>
-							<span>FULL SITE EDITING</span>
+				foreach ( $initial_items as $item ) :
+					?>
+					<article class="case-study-card">
+						<div class="case-study-image" style="background: <?php echo esc_attr( $item['bg_color'] ); ?>;">
+							<?php if ( strpos( $item['image'], '.svg' ) !== false || strpos( $item['image'], '.gif' ) !== false ) : ?>
+								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+							<?php else : ?>
+								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+							<?php endif; ?>
 						</div>
-						<h4>WPGigs Official Website</h4>
-						<p>WordPress job marketplace built with Full Site Editing and custom Gutenberg blocks for maximum flexibility.</p>
-						<a href="https://wpgigs.com/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-				<!-- Cavenaugh Media -->
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #16213e;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/case-studies/cavenaughmedia.svg" alt="Cavenaugh Media Website" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>ELEMENTOR</span>
-							<span>CREATIVE AGENCY</span>
+						<div class="case-study-content">
+							<div class="case-study-meta">
+								<?php foreach ( $item['tags'] as $tag ) : ?>
+									<span><?php echo esc_html( $tag ); ?></span>
+								<?php endforeach; ?>
+							</div>
+							<h4><?php echo esc_html( $item['title'] ); ?></h4>
+							<p><?php echo esc_html( $item['description'] ); ?></p>
+							<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank" class="case-study-link"><?php echo esc_html( $item['link_text'] ); ?></a>
 						</div>
-						<h4>Cavenaugh Media</h4>
-						<p>Creative media agency website built with Elementor, showcasing dynamic layouts and custom widget integrations.</p>
-						<a href="https://cavenaughmedia.com/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/back-to-top.png" alt="Back to Top Plugin" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>PLUGIN</span>
-							<span>WORDPRESS.ORG</span>
-						</div>
-						<h4>Back to Top</h4>
-						<p>Simple and lightweight WordPress plugin for smooth scroll-to-top functionality.</p>
-						<a href="https://wordpress.org/plugins/ar-back-to-top/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-				
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d131a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/rashed-corp.png" alt="Rashed Corp Website" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>WEB DESIGN</span>
-							<span>WORDPRESS</span>
-						</div>
-						<h4>Rashed Corp</h4>
-						<p>A professional corporate WordPress website built with high-performance standards.</p>
-						<a href="https://rashedcorp.co.uk/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/pastel-arabia.png" alt="Pastel Arabia" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>E-COMMERCE</span>
-							<span>WOOCOMMERCE</span>
-						</div>
-						<h4>Pastel Arabia</h4>
-						<p>High-end WooCommerce store optimized for conversion and speed.</p>
-						<a href="https://pastelarabia.com/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d131a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/bootscore.png" alt="BootScore Theme" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>OPEN SOURCE</span>
-							<span>BOOTSTRAP 5</span>
-						</div>
-						<h4>BootScore Theme</h4>
-						<p>Active contributor to this popular Bootstrap 5 based WordPress starter theme.</p>
-						<a href="https://github.com/bootscore/bootscore" target="_blank" class="case-study-link">View Source →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/popup-creator.png" alt="Popup Creator" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>PLUGIN</span>
-							<span>GITHUB</span>
-						</div>
-						<h4>Popup Creator</h4>
-						<p>Custom WordPress plugin for creating and managing highly customizable popups.</p>
-						<a href="https://github.com/anisur2805/arpc-popup-creator" target="_blank" class="case-study-link">View Source →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d131a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/slack-clone.png" alt="Slack App Clone" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>APP</span>
-							<span>SLACK CLONE</span>
-						</div>
-						<h4>Slack App Clone</h4>
-						<p>Technical demonstration of a real-time messaging interface architecture.</p>
-						<a href="https://github.com/anisur2805/slack-clone" target="_blank" class="case-study-link">View Source →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/wc-mini-cart.gif" alt="WC Mini Cart" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>E-COMMERCE</span>
-							<span>AJAX</span>
-						</div>
-						<h4>WC Mini Cart</h4>
-						<p>Enhanced WooCommerce mini-cart with AJAX plus/minus functionality.</p>
-						<a href="https://github.com/anisur2805/woocommerce-mini-cart-ajax-plus-minus" target="_blank" class="case-study-link">View Source →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d131a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/wc-quick-order.svg" alt="WC Quick Order" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>PLUGIN</span>
-							<span>WOOCOMMERCE</span>
-						</div>
-						<h4>WC Quick Order</h4>
-						<p>High-efficiency quick order solution for bulk WooCommerce transactions.</p>
-						<a href="https://github.com/anisur2805/quick-order-for-woocommerce" target="_blank" class="case-study-link">View Source →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/pastel-bangladesh.png" alt="Pastel Bangladesh" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>E-COMMERCE</span>
-							<span>WOOCOMMERCE</span>
-						</div>
-						<h4>Pastel Bangladesh</h4>
-						<p>Localized e-commerce experience for the Bangladesh market with optimized performance.</p>
-						<a href="https://pastelbangladesh.com/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #0d131a;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/global-one.png" alt="Global One" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>NON-PROFIT</span>
-							<span>DONATION</span>
-						</div>
-						<h4>Global One</h4>
-						<p>A high-impact donation platform designed for global outreach and reliability.</p>
-						<a href="https://global-one.com/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article>
-
-				<article class="case-study-card">
-					<div class="case-study-image" style="background: #111821;">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/portfolio/smooth-move.png" alt="Smooth Move Removal" style="width: 100%; height: 100%; object-fit: cover;">
-					</div>
-					<div class="case-study-content">
-						<div class="case-study-meta">
-							<span>SERVICES</span>
-							<span>WORDPRESS</span>
-						</div>
-						<h4>Smooth Move Removal</h4>
-						<p>A service-based WordPress website with custom booking and service integrations.</p>
-						<a href="https://smoothmoveremovals.com.au/" target="_blank" class="case-study-link">View Project →</a>
-					</div>
-				</article> -->
+					</article>
+				<?php endforeach; ?>
 			</div>
+
+			<?php if ( count( $portfolio_items ) > 6 ) : ?>
+				<div id="load-more-container" class="text-center mt-5">
+					<button id="load-more-btn" class="btn btn-secondary">Load More</button>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 

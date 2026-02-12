@@ -3,6 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+require_once get_template_directory() . '/inc/portfolio-data.php';
+
 /**
  * Enqueue scripts and styles.
  */
@@ -20,8 +22,14 @@ function anisur_portfolio_scripts() {
 	wp_enqueue_script( 'anisur-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
 
 	// Todo App Script
+
+	// Load More Script
 	if ( is_front_page() ) {
-		wp_enqueue_script( 'anisur-todo-script', get_template_directory_uri() . '/assets/js/todo.js', array(), '1.0.0', true );
+		wp_enqueue_script( 'anisur-load-more', get_template_directory_uri() . '/assets/js/load-more.js', array( 'jquery' ), '1.0.0', true );
+		wp_localize_script( 'anisur-load-more', 'anisur_ajax', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'nonce'    => wp_create_nonce( 'anisur_load_more_nonce' ),
+		) );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'anisur_portfolio_scripts' );
@@ -109,3 +117,57 @@ function anisur_portfolio_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'github_url', array( 'label' => 'GitHub URL', 'section' => 'seera_contact_section', 'type' => 'url' ) );
 }
 add_action( 'customize_register', 'anisur_portfolio_customize_register' );
+
+/**
+ * AJAX Load More Portfolio
+ */
+function anisur_load_more_portfolio() {
+	check_ajax_referer( 'anisur_load_more_nonce', 'nonce' );
+
+	$page = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+	$posts_per_page = 6;
+	$offset = $page * $posts_per_page;
+
+	$items = anisur_get_portfolio_items();
+	$total_items = count( $items );
+	$sliced_items = array_slice( $items, $offset, $posts_per_page );
+
+	ob_start();
+
+	if ( ! empty( $sliced_items ) ) {
+		foreach ( $sliced_items as $item ) {
+			?>
+			<article class="case-study-card revealed" style="opacity: 1; transform: translateY(0);">
+				<div class="case-study-image" style="background: <?php echo esc_attr( $item['bg_color'] ); ?>;">
+					<?php if ( strpos( $item['image'], '.svg' ) !== false || strpos( $item['image'], '.gif' ) !== false ) : ?>
+						<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+					<?php else : ?>
+						<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+					<?php endif; ?>
+				</div>
+				<div class="case-study-content">
+					<div class="case-study-meta">
+						<?php foreach ( $item['tags'] as $tag ) : ?>
+							<span><?php echo esc_html( $tag ); ?></span>
+						<?php endforeach; ?>
+					</div>
+					<h4><?php echo esc_html( $item['title'] ); ?></h4>
+					<p><?php echo esc_html( $item['description'] ); ?></p>
+					<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank" class="case-study-link"><?php echo esc_html( $item['link_text'] ); ?></a>
+				</div>
+			</article>
+			<?php
+		}
+	}
+
+	$content = ob_get_clean();
+	$has_more = ( $offset + $posts_per_page ) < $total_items;
+
+	wp_send_json_success( array(
+		'html'     => $content,
+		'has_more' => $has_more,
+	) );
+}
+add_action( 'wp_ajax_load_more_portfolio', 'anisur_load_more_portfolio' );
+add_action( 'wp_ajax_nopriv_load_more_portfolio', 'anisur_load_more_portfolio' );
+

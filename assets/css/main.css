@@ -2094,3 +2094,9 @@ img {
 	margin-bottom: 8px;
 	color: var(--accent-primary);
 }
+
+/* Load More Button Alignment */
+#load-more-container {
+    margin-top: 20px;
+    text-align: center;
+}
