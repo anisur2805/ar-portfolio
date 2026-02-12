@@ -18,17 +18,13 @@ function anisur_portfolio_scripts() {
 	// Font Awesome for Social Icons
 	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0' );
 
-	// Main Custom Script
-	wp_enqueue_script( 'anisur-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
-
-	// Todo App Script
-
 	// Load More Script
 	if ( is_front_page() ) {
 		wp_enqueue_script( 'anisur-load-more', get_template_directory_uri() . '/assets/js/load-more.js', array( 'jquery' ), '1.0.0', true );
-		wp_localize_script( 'anisur-load-more', 'anisur_ajax', array(
+		wp_enqueue_script( 'anisur-contact', get_template_directory_uri() . '/assets/js/contact.js', array( 'jquery' ), '1.0.0', true );
+		wp_localize_script( 'anisur-contact', 'anisur_ajax', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce'    => wp_create_nonce( 'anisur_load_more_nonce' ),
+			'nonce'    => wp_create_nonce( 'anisur_load_more_nonce' ), // Reusing nonce or creating new one? Ideally separate, but for simplicity reusing the object name. I'll stick to 'anisur_ajax' object name but maybe add a new nonce key if needed, or just use one general nonce. I'll use the same nonce for simplicity as it's the same user session context.
 		) );
 	}
 }
@@ -169,5 +165,37 @@ function anisur_load_more_portfolio() {
 	) );
 }
 add_action( 'wp_ajax_load_more_portfolio', 'anisur_load_more_portfolio' );
+add_action( 'wp_ajax_load_more_portfolio', 'anisur_load_more_portfolio' );
 add_action( 'wp_ajax_nopriv_load_more_portfolio', 'anisur_load_more_portfolio' );
+
+/**
+ * AJAX Contact Form Handler
+ */
+function anisur_send_contact_email() {
+	check_ajax_referer( 'anisur_load_more_nonce', 'nonce' ); // Using the same nonce action for simplicity
+
+	$name    = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
+	$email   = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
+	$message = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
+
+	if ( empty( $name ) || empty( $email ) || empty( $message ) ) {
+		wp_send_json_error( array( 'message' => 'Please fill in all fields.' ) );
+	}
+
+	$to      = get_option( 'admin_email' );
+	$subject = 'New Contact Message from ' . $name;
+	$body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+	$headers = array( 'Content-Type: text/plain; charset=UTF-8', 'From: ' . $name . ' <' . $email . '>' );
+
+	if ( wp_mail( $to, $subject, $body, $headers ) ) {
+		wp_send_json_success();
+	} else {
+		// Fallback for local environments or if wp_mail fails (mock success for now if needed, but let's try real first)
+		// For portfolio demo, sometimes wp_mail isn't configured. I'll assume it works or log it.
+		error_log( "Contact Form Email Failed: $to, $subject" );
+		wp_send_json_error( array( 'message' => 'Failed to send email. Please try again later.' ) );
+	}
+}
+add_action( 'wp_ajax_send_contact_email', 'anisur_send_contact_email' );
+add_action( 'wp_ajax_nopriv_send_contact_email', 'anisur_send_contact_email' );
 

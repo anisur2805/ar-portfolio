@@ -438,15 +438,28 @@ get_header();
 		</div>
 	</section>
 
-	<!-- FOOTER CTA -->
-	<section id="contact" class="footer-cta">
+	<!-- CONTACT SECTION -->
+	<section id="contact" class="section contact-section">
 		<div class="container">
-			<div class="cta-banner">
-				<h2>Ready to build something<br>genuinely robust?</h2>
-				<p>I am currently accepting inquiries for senior contact-level and high-impact project engineering globally.</p>
-				<div class="cta-actions">
-					<a href="mailto:anisur2805@gmail.com" class="btn btn-dark">anisur2805@gmail.com</a>
-					<a href="https://calendly.com/anisur2805/30min" target="_blank" class="btn btn-outline">Book a Strategy Call</a>
+			<div class="contact-inner">
+				<h2 class="section-badge">CONTACT</h2>
+				<h3 class="contact-heading">Let's Create Something<br><span class="accent-text">Amazing</span></h3>
+				<div class="contact-form-wrapper">
+					<form id="contact-form" class="contact-form">
+						<div class="form-group">
+							<label for="contact-name">Name</label>
+							<input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<label for="contact-email">Email</label>
+							<input type="email" id="contact-email" name="email" placeholder="Your@email.com" required>
+						</div>
+						<div class="form-group">
+							<label for="contact-message">Message</label>
+							<textarea id="contact-message" name="message" rows="5" placeholder="Your Message" required></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Send</button>
+					</form>
 				</div>
 			</div>
 		</div>

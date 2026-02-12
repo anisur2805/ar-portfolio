@@ -19,6 +19,7 @@
 	--accent-glow: rgba(0, 209, 160, 0.4);
 	
 	/* Borders & Blurs */
+	--accent-purple: #9D5CFF;
 	--border-glass: rgba(255, 255, 255, 0.05);
 	--bg-glass: rgba(255, 255, 255, 0.02);
 	--backdrop-blur: blur(20px);
@@ -2099,4 +2100,122 @@ img {
 #load-more-container {
     margin-top: 20px;
     text-align: center;
+}
+
+/* ==========================================================================
+   Contact Section - Let's Create Something Amazing
+   ========================================================================== */
+.contact-section {
+	background: var(--bg-secondary);
+	border-top: 1px solid var(--border-glass);
+	padding: var(--section-padding) 0;
+}
+
+.contact-inner {
+	max-width: 560px;
+	margin: 0 auto;
+}
+
+.contact-section .section-badge {
+	margin-bottom: 16px;
+}
+
+.contact-heading {
+	font-size: clamp(2rem, 5vw, 3rem);
+	font-weight: 700;
+	color: var(--text-primary);
+	line-height: 1.1;
+	margin-bottom: 48px;
+	letter-spacing: -0.02em;
+}
+
+.contact-form-wrapper {
+	background: var(--bg-card);
+	padding: 40px;
+	border-radius: var(--card-radius);
+	border: 1px solid var(--border-glass);
+	box-shadow: var(--shadow-card);
+	transition: var(--transition);
+}
+
+.contact-form-wrapper:hover {
+	border-color: rgba(0, 209, 160, 0.2);
+}
+
+.contact-form {
+	position: relative;
+}
+
+.contact-form .form-group {
+	margin-bottom: 24px;
+}
+
+.contact-form .form-group:last-of-type {
+	margin-bottom: 32px;
+}
+
+.contact-form .form-group label {
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 8px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-family: var(--font-primary);
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+	width: 100%;
+	background: var(--bg-secondary);
+	border: 1px solid var(--border-glass);
+	border-radius: var(--card-radius);
+	padding: 14px 16px;
+	color: var(--text-primary);
+	font-family: var(--font-primary);
+	font-size: 1rem;
+	transition: var(--transition);
+	resize: vertical;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group textarea:focus {
+	outline: none;
+	border-color: var(--accent-primary);
+	box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.contact-form .form-group input::placeholder,
+.contact-form .form-group textarea::placeholder {
+	color: var(--text-muted);
+}
+
+.contact-form .btn-primary {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+/* Contact success message (AJAX response) */
+.contact-form .success-message {
+	animation: contactFadeIn 0.5s ease;
+}
+
+.contact-form .success-message h3 {
+	color: var(--accent-primary);
+}
+
+@keyframes contactFadeIn {
+	from { opacity: 0; transform: translateY(10px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+	.contact-form-wrapper {
+		padding: 32px 24px;
+	}
+
+	.contact-heading {
+		margin-bottom: 36px;
+	}
 }
