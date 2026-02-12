@@ -7,9 +7,15 @@ jQuery(document).ready(function($) {
         e.preventDefault();
 
         // Basic validation
-        const name = $('#contact-name').val().trim();
-        const email = $('#contact-email').val().trim();
-        const message = $('#contact-message').val().trim();
+		const name = $('#contact-name').val().trim();
+		const email = $('#contact-email').val().trim();
+		const message = $('#contact-message').val().trim();
+
+		const $subjectField = $('#contact-subject');
+		const $phoneField   = $('#contact-phone');
+
+		const subject = $subjectField.length ? $subjectField.val().trim() : '';
+		const phone   = $phoneField.length ? $phoneField.val().trim() : '';
 
         if (!name || !email || !message) {
             alert('Please fill in all fields.');
@@ -26,7 +32,9 @@ jQuery(document).ready(function($) {
                 nonce: anisur_ajax.nonce,
                 name: name,
                 email: email,
-                message: message
+				message: message,
+				subject: subject,
+				phone: phone
             },
             success: function(response) {
                 if (response.success) {

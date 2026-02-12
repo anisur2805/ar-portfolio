@@ -59,13 +59,31 @@ get_header();
 	<!-- ECOSYSTEM SECTION -->
 	<section id="ecosystem" class="ecosystem-section">
 		<div class="container">
-			<p class="ecosystem-label">INTEGRATING WITH THE ECOSYSTEM</p>
+			<p class="ecosystem-label">
+				<i class="fa-solid fa-plug"></i>
+				Integrating with the ecosystem
+			</p>
 			<div class="logo-grid">
-				<div class="logo-item">GUTENBERG</div>
-				<div class="logo-item">REACT_JS</div>
-				<div class="logo-item">DIVI_NEXT</div>
-				<div class="logo-item">ELEMENTOR</div>
-				<div class="logo-item">WOOCOMMERCE</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-wordpress-simple"></i></span>
+					<span class="logo-text">GUTENBERG</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-react"></i></span>
+					<span class="logo-text">REACT_JS</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
+					<span class="logo-text">DIVI_NEXT</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-elementor"></i></span>
+					<span class="logo-text">ELEMENTOR</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-woocommerce"></i></span>
+					<span class="logo-text">WOOCOMMERCE</span>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -126,7 +144,7 @@ get_header();
 			
 			<div class="stack-grid">
 				<div class="stack-group">
-					<h5>LANGUAGES</h5>
+					<h5><i class="fa-solid fa-code"></i> LANGUAGES</h5>
 					<div class="tag-cloud">
 						<span>PHP 8.x (OOP)</span>
 						<span>React.js</span>
@@ -135,7 +153,7 @@ get_header();
 					</div>
 				</div>
 				<div class="stack-group">
-					<h5>TOOLS & WORKFLOW</h5>
+					<h5><i class="fa-solid fa-screwdriver-wrench"></i> TOOLS & WORKFLOW</h5>
 					<div class="tag-cloud">
 						<span>Tailwind CSS</span>
 						<span>Composer / NPM</span>
@@ -144,7 +162,7 @@ get_header();
 					</div>
 				</div>
 				<div class="stack-group">
-					<h5>WP SPECIALTY</h5>
+					<h5><i class="fa-brands fa-wordpress-simple"></i> WP SPECIALTY</h5>
 					<div class="tag-cloud">
 						<span>Divi / Elementor API</span>
 						<span>Gutenberg Blocks</span>
@@ -453,6 +471,14 @@ get_header();
 						<div class="form-group">
 							<label for="contact-email">Email</label>
 							<input type="email" id="contact-email" name="email" placeholder="Your@email.com" required>
+						</div>
+						<div class="form-group">
+							<label for="contact-phone">Phone <span style="opacity: 0.7;">(optional)</span></label>
+							<input type="tel" id="contact-phone" name="phone" placeholder="+1 555 123 4567">
+						</div>
+						<div class="form-group">
+							<label for="contact-subject">Subject <span style="opacity: 0.7;">(optional)</span></label>
+							<input type="text" id="contact-subject" name="subject" placeholder="Project type, topic, or question">
 						</div>
 						<div class="form-group">
 							<label for="contact-message">Message</label>

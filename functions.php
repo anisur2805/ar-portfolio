@@ -174,18 +174,52 @@ add_action( 'wp_ajax_nopriv_load_more_portfolio', 'anisur_load_more_portfolio' )
 function anisur_send_contact_email() {
 	check_ajax_referer( 'anisur_load_more_nonce', 'nonce' ); // Using the same nonce action for simplicity
 
-	$name    = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
-	$email   = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
-	$message = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
+	$name          = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
+	$email         = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
+	$message       = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
+	$phone         = isset( $_POST['phone'] ) ? sanitize_text_field( $_POST['phone'] ) : '';
+	$user_subject  = isset( $_POST['subject'] ) ? sanitize_text_field( $_POST['subject'] ) : '';
 
 	if ( empty( $name ) || empty( $email ) || empty( $message ) ) {
 		wp_send_json_error( array( 'message' => 'Please fill in all fields.' ) );
 	}
 
 	$to      = get_option( 'admin_email' );
-	$subject = 'New Contact Message from ' . $name;
-	$body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-	$headers = array( 'Content-Type: text/plain; charset=UTF-8', 'From: ' . $name . ' <' . $email . '>' );
+	$subject = 'New Portfolio Inquiry from ' . $name;
+
+	if ( ! empty( $user_subject ) ) {
+		$subject .= ' – ' . $user_subject;
+	}
+
+	$body_lines   = array();
+	$body_lines[] = 'You have received a new message from your portfolio contact form.';
+	$body_lines[] = '';
+	$body_lines[] = 'Name: ' . $name;
+	$body_lines[] = 'Email: ' . $email;
+
+	if ( ! empty( $phone ) ) {
+		$body_lines[] = 'Phone: ' . $phone;
+	}
+
+	if ( ! empty( $user_subject ) ) {
+		$body_lines[] = 'Subject: ' . $user_subject;
+	}
+
+	$body_lines[] = '';
+	$body_lines[] = 'Message:';
+	$body_lines[] = $message;
+	$body_lines[] = '';
+	$body_lines[] = '---';
+	$body_lines[] = 'Submitted from: ' . home_url();
+	$body_lines[] = 'Date: ' . current_time( 'F j, Y g:i a' );
+
+	$body = implode( "\n", $body_lines );
+
+	$headers = array(
+		'Content-Type: text/plain; charset=UTF-8',
+		'From: ' . $name . ' <' . $email . '>',
+		'Reply-To: ' . $name . ' <' . $email . '>',
+	);
 
 	if ( wp_mail( $to, $subject, $body, $headers ) ) {
 		wp_send_json_success();
