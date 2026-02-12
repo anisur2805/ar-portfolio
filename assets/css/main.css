@@ -2184,6 +2184,17 @@ img {
 	margin-bottom: 24px;
 }
 
+.contact-form .contact-hp {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
 .contact-form .form-group:last-of-type {
 	margin-bottom: 32px;
 }

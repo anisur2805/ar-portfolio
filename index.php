@@ -484,6 +484,10 @@ get_header();
 							<label for="contact-message">Message</label>
 							<textarea id="contact-message" name="message" rows="5" placeholder="Your Message" required></textarea>
 						</div>
+						<div class="form-group contact-hp">
+							<label for="contact-website">Website</label>
+							<input type="text" id="contact-website" name="website" autocomplete="off" tabindex="-1">
+						</div>
 						<button type="submit" class="btn btn-primary btn-block">Send</button>
 					</form>
 				</div>

@@ -18,14 +18,39 @@ function anisur_portfolio_scripts() {
 	// Font Awesome for Social Icons
 	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0' );
 
-	// Load More Script
+	// Load More & Contact Scripts
 	if ( is_front_page() ) {
 		wp_enqueue_script( 'anisur-load-more', get_template_directory_uri() . '/assets/js/load-more.js', array( 'jquery' ), '1.0.0', true );
-		wp_enqueue_script( 'anisur-contact', get_template_directory_uri() . '/assets/js/contact.js', array( 'jquery' ), '1.0.0', true );
-		wp_localize_script( 'anisur-contact', 'anisur_ajax', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce'    => wp_create_nonce( 'anisur_load_more_nonce' ), // Reusing nonce or creating new one? Ideally separate, but for simplicity reusing the object name. I'll stick to 'anisur_ajax' object name but maybe add a new nonce key if needed, or just use one general nonce. I'll use the same nonce for simplicity as it's the same user session context.
-		) );
+
+		$recaptcha_site_key = get_theme_mod( 'recaptcha_site_key', '' );
+
+		if ( ! empty( $recaptcha_site_key ) ) {
+			wp_enqueue_script(
+				'google-recaptcha',
+				'https://www.google.com/recaptcha/api.js?render=' . rawurlencode( $recaptcha_site_key ),
+				array(),
+				null,
+				true
+			);
+		}
+
+		wp_enqueue_script(
+			'anisur-contact',
+			get_template_directory_uri() . '/assets/js/contact.js',
+			! empty( $recaptcha_site_key ) ? array( 'jquery', 'google-recaptcha' ) : array( 'jquery' ),
+			'1.0.0',
+			true
+		);
+
+		wp_localize_script(
+			'anisur-contact',
+			'anisur_ajax',
+			array(
+				'ajax_url'           => admin_url( 'admin-ajax.php' ),
+				'nonce'              => wp_create_nonce( 'anisur_load_more_nonce' ),
+				'recaptcha_site_key' => $recaptcha_site_key,
+			)
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'anisur_portfolio_scripts' );
@@ -111,6 +136,41 @@ function anisur_portfolio_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'github_url', array( 'default' => 'https://github.com/anisur2805', 'sanitize_callback' => 'esc_url_raw' ) );
 	$wp_customize->add_control( 'github_url', array( 'label' => 'GitHub URL', 'section' => 'seera_contact_section', 'type' => 'url' ) );
+
+	// reCAPTCHA v3 settings
+	$wp_customize->add_setting(
+		'recaptcha_site_key',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'recaptcha_site_key',
+		array(
+			'label'       => __( 'reCAPTCHA v3 Site Key', 'anisur-portfolio' ),
+			'description' => __( 'Get keys from Google reCAPTCHA admin console and paste the site key here.', 'anisur-portfolio' ),
+			'section'     => 'seera_contact_section',
+			'type'        => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'recaptcha_secret_key',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'recaptcha_secret_key',
+		array(
+			'label'       => __( 'reCAPTCHA v3 Secret Key', 'anisur-portfolio' ),
+			'description' => __( 'Secret key used on the server to verify reCAPTCHA tokens.', 'anisur-portfolio' ),
+			'section'     => 'seera_contact_section',
+			'type'        => 'text',
+		)
+	);
 }
 add_action( 'customize_register', 'anisur_portfolio_customize_register' );
 
@@ -174,14 +234,67 @@ add_action( 'wp_ajax_nopriv_load_more_portfolio', 'anisur_load_more_portfolio' )
 function anisur_send_contact_email() {
 	check_ajax_referer( 'anisur_load_more_nonce', 'nonce' ); // Using the same nonce action for simplicity
 
-	$name          = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
-	$email         = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
-	$message       = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
-	$phone         = isset( $_POST['phone'] ) ? sanitize_text_field( $_POST['phone'] ) : '';
-	$user_subject  = isset( $_POST['subject'] ) ? sanitize_text_field( $_POST['subject'] ) : '';
+	$name          = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+	$email         = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$message       = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$phone         = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
+	$user_subject  = isset( $_POST['subject'] ) ? sanitize_text_field( wp_unslash( $_POST['subject'] ) ) : '';
+	$honeypot      = isset( $_POST['website'] ) ? trim( wp_unslash( $_POST['website'] ) ) : '';
+	$recaptcha     = isset( $_POST['recaptcha_token'] ) ? sanitize_text_field( wp_unslash( $_POST['recaptcha_token'] ) ) : '';
 
-	if ( empty( $name ) || empty( $email ) || empty( $message ) ) {
-		wp_send_json_error( array( 'message' => 'Please fill in all fields.' ) );
+	// Honeypot check: real users never see/fill this field.
+	if ( ! empty( $honeypot ) ) {
+		// Pretend success to avoid giving bots feedback.
+		wp_send_json_success();
+	}
+
+	// Basic validation.
+	if ( empty( $name ) || empty( $email ) || empty( $message ) || ! is_email( $email ) ) {
+		wp_send_json_error( array( 'message' => 'Please provide a valid name, email, and message.' ) );
+	}
+
+	// reCAPTCHA v3 verification (if configured).
+	$recaptcha_secret = get_theme_mod( 'recaptcha_secret_key', '' );
+	if ( ! empty( $recaptcha_secret ) ) {
+		if ( empty( $recaptcha ) ) {
+			wp_send_json_error( array( 'message' => 'reCAPTCHA verification failed. Please try again.' ) );
+		}
+
+		$verify_response = wp_remote_post(
+			'https://www.google.com/recaptcha/api/siteverify',
+			array(
+				'timeout' => 10,
+				'body'    => array(
+					'secret'   => $recaptcha_secret,
+					'response' => $recaptcha,
+					'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
+				),
+			)
+		);
+
+		if ( is_wp_error( $verify_response ) ) {
+			wp_send_json_error( array( 'message' => 'Unable to verify reCAPTCHA. Please try again later.' ) );
+		}
+
+		$verify_body = json_decode( wp_remote_retrieve_body( $verify_response ), true );
+
+		// Require success and a reasonable score when using reCAPTCHA v3.
+		if ( empty( $verify_body['success'] ) || ( isset( $verify_body['score'] ) && (float) $verify_body['score'] < 0.5 ) ) {
+			wp_send_json_error( array( 'message' => 'reCAPTCHA verification failed. Please try again.' ) );
+		}
+	}
+
+	// Very simple rate limiting: block excessive submits from same IP.
+	$ip_address = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	if ( ! empty( $ip_address ) ) {
+		$rate_key = 'anisur_contact_rate_' . md5( $ip_address );
+		$count    = (int) get_transient( $rate_key );
+
+		if ( $count >= 5 ) {
+			wp_send_json_error( array( 'message' => 'Too many submissions detected from your IP. Please try again later.' ) );
+		}
+
+		set_transient( $rate_key, $count + 1, 10 * MINUTE_IN_SECONDS );
 	}
 
 	$to      = get_option( 'admin_email' );
